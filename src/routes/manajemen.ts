@@ -14,14 +14,13 @@ interface manajementask {
 }
 
 const router = Router();
-router.get("/currentdate", async (req, res) => {
+router.get("/timedb", async (req, res) => {
   try {
-    const query = "SELECT NOW() AS current_date";
+    const query = "SELECT NOW() AS timedb";
     const result = await pool.query(query);
 
     res.json({ status: "success", data: result.rows[0] });
   } catch (err: any) {
-    console.log("ERRORRR KONTOL");
     res.status(500).json({ status: "error", message: err.message });
   }
 });
